@@ -1,5 +1,6 @@
 import flet
-from flet import ThemeMode, Text, TextField, Button, OutlinedButton, Column, CrossAxisAlignment
+from flet import ThemeMode, Text, TextField, Button, OutlinedButton, Column, CrossAxisAlignment, Container, FontWeight, \
+    Colors
 
 
 def main(page: flet.Page):
@@ -37,43 +38,78 @@ def main(page: flet.Page):
 
     t1 = Text()
     input_numero = TextField(label="digite um numero")
-    btn_salvar_2 = OutlinedButton("Salvar", on_click=verificar_numero)
+    btn_salvar_2 = OutlinedButton("verificar par ou impar", on_click=verificar_numero)
 
     def data_nascimento():
         idade = int(input_idade.value)
         resultado_idade = 2026 - idade
         if resultado_idade >= 18:
-            text.value = f'maior de idade {resultado_idade}'
+            text.value = f'voce tem {resultado_idade} anos e é maior de idade'
             page.update()
         else:
-            text.value = f'menor de idade {resultado_idade}'
+            text.value = f'voce tem {resultado_idade} anos e é menor de idade'
             page.update()
 
-
     input_idade = TextField(label="ano de nascimento")
-    btn_salvar_3 = OutlinedButton("Salvar", on_click=data_nascimento)
+    btn_salvar_3 = OutlinedButton("calcular idade", on_click=data_nascimento)
     text = Text()
 
-# construcao da tela
+    # construcao da tela
 
     page.add(
-    Column(
-        [
-            input_nome,
-            input_sobrenome,
-            btn_salvar_1,
+        Column(
+            [
+                Container(
+                    Column(
+                        [
+                            Text("atividade 1", weight=FontWeight.BOLD, size=24),
+                            input_nome,
+                            input_sobrenome,
+                            btn_salvar_1,
+                            text,
+                        ],
+                        horizontal_alignment=CrossAxisAlignment.CENTER,
+                    ),
+                    bgcolor=Colors.BLUE_200,
+                    padding=15,
+                    border_radius=10,
+                    width=400,
+                ),
+                Container(
+                    Column(
+                        [
+                            Text("atividade 2", weight=FontWeight.BOLD, size=24),
+                            input_numero,
+                            btn_salvar_2,
+                            text,
+                        ],
+                        horizontal_alignment=CrossAxisAlignment.CENTER,
+                    ),
+                    bgcolor=Colors.BLUE_200,
+                    padding=15,
+                    border_radius=10,
+                    width=400,
+                ),
+                Container(
+                    Column(
+                        [
+                            Text("atividade 3", weight=FontWeight.BOLD, size=24),
+                            input_idade,
+                            btn_salvar_3,
+                            text,
+                        ],
+                        horizontal_alignment=CrossAxisAlignment.CENTER,
+                    ),
+                    bgcolor=Colors.BLUE_200,
+                    padding=15,
+                    border_radius=10,
+                    width=400,
+                ),
+            ],
+            width=400,
+            horizontal_alignment=CrossAxisAlignment.CENTER
+        ),
 
-            input_numero,
-            btn_salvar_2,
+    ),
 
-            input_idade,
-            btn_salvar_3,
-            t1,
-            text,
-        ],
-        width=400,
-        horizontal_alignment=CrossAxisAlignment.CENTER
-    )
-)
-
-flet.app(main)
+flet.run(main)
