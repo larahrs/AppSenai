@@ -89,7 +89,7 @@ def main(page: flet.Page):
 
                     Text("digite sua regiao de trabalho:"),
                     input_regiao_trabalho,
-                    OutlinedButton("Salvar", on_click=salvar_funcionario)
+                    OutlinedButton("salvar", on_click=salvar_funcionario)
                 ]
             )
         )
