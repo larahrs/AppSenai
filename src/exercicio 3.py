@@ -72,7 +72,7 @@ def main(page: flet.Page):
                 route="/",
                 controls=[
                     AppBar(
-                        title="fornecedor",
+                        title="primeira tela",
                         bgcolor=Colors.BLUE_900
                     ),
                     Text("digite seu nome:"),
@@ -99,7 +99,7 @@ def main(page: flet.Page):
                     route="/segunda_tela",
                     controls=[
                         AppBar(
-                            title="fornecedor",
+                            title="segunda tela",
                             bgcolor=Colors.BLUE_900
                         ),
                         text_nome,
